@@ -1,26 +1,9 @@
-  <nav class="grey darken-1" role="navigation">
-    <div class="nav-wrapper container"><!-- <a id="logo-container" href="#" class="brand-logo">Logo</a> -->
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#/dashboard">TRIPS</a></li>
-        <li class="active"><a href="#/user">USERS</a></li>
-        <li><a href="#/recharges">RECHARGES</a></li>
-        <li><a href="#/vehicles">VEHICLES</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#/dashboard">TRIPS</a></li>
-        <li><a href="#/user">USERS</a></li>
-        <li><a href="#/recharges">RECHARGES</a></li>
-        <li><a href="#/vehicles">VEHICLES</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">Menu</i></a>
-    </div>
-  </nav>
+<header ng-include="'html/header.html'"></header>
   <main>
     <div class="container">
       <div class="section">
         <div class="right-align">
-          <a href="#/addUser" class="waves-effect waves-light btn">Add User</a>    
+          <a href="#/addUser" class="waves-effect waves-light btn">Add New</a>    
         </div>
         <table>
             <thead>
@@ -54,10 +37,4 @@
       </div>
     </div>
   </main>
-  <footer class="page-footer grey darken-1" style="padding-top: 0">
-    <div class="footer-copyright">
-      <div class="container">
-       <!--  Made by <a class="orange-text text-lighten-3" href="#">Materialize</a> -->
-      </div>
-    </div>
-  </footer>
+  <footer class="page-footer grey darken-1" style="padding-top: 0" ng-include="'html/footer.html'"></footer>

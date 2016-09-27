@@ -25,6 +25,12 @@ customApp.config(function($routeProvider){
     }).when('/addUser', {
         controller: 'addUserController',
         templateUrl: 'html/add-user.html'
+    }).when('/vendors', {
+        controller: 'vendorController',
+        templateUrl: 'html/vendors.html'
+    }).when('/addVendor', {
+        controller: 'addVendorController',
+        templateUrl: 'html/add-vendor.html'
     }).otherwise({
         redirectTo: '/'
     });

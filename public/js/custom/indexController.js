@@ -19,6 +19,9 @@ customApp.factory("flash", function($rootScope) {
 
 
 customApp.controller('indexController', function ($scope, $http, $location, flash) {
+    $scope.templates =
+      [{ name: 'template1.html', url: 'header.html'}];
+    $scope.header = $scope.templates[0];
 	 $scope.noError = true;	
      $scope.ErrorMessage = '';
      $scope.login = function() {
