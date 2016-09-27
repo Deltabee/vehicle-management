@@ -6,7 +6,7 @@ exports.login = function(crypto){
          if(err){
              console.log("Error connecting to Db");
          }
-         console.log("DB connection established")
+         console.log("DB connection established");
         var userName = req.body.userName;
         var password = req.body.password;
         var queryString = 'SELECT * FROM admin_master where username = "'+userName+'"';
@@ -72,7 +72,6 @@ exports.authenticated = function(req,res){
 };
 //Logout Route Handling
 exports.logout = function(req,res){
-    
     sess.userID ='' ;
     sess.userPrivilege = 0;
     sess.userLevel = '';
@@ -80,4 +79,28 @@ exports.logout = function(req,res){
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(result)); 
 }
+
+exports.userlist = function(req,res){
+    req.getConnection(function(err,connection){ 
+     var queryString = 'SELECT * FROM user_master';
+     var result = {}; 
+return connection.query(queryString, function(err, rows, fields) {
+            if (err)
+            {
+                result.error= err;
+                  
+            }
+      else{
+          result.success=rows;
+          console.log(rows);
+      }
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(result)); 
+ 
+      }); 
+    });
+};
+
+                      
+                     
 

@@ -41,6 +41,8 @@
     /*Routing Handler*/
     app.get('*', router.index);
     app.post('/login', admin.login(crypto));
+    app.get('/authentication:access', admin.authenticated);
+    app.get('/userList', admin.userlist); 
     app.use(app.router);
     /*Routing Handler*/
     
