@@ -70,7 +70,7 @@ exports.authenticated = function(req,res){
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(result)); 
 };
-
+//Logout Route Handling
 exports.logout = function(req,res){
     
     sess.userID ='' ;
