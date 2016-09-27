@@ -25,8 +25,7 @@ customApp.controller('indexController', function ($scope, $http, $location, flas
    
         $http.post("/login", {userName:$scope.username, password: $scope.password})
         .success(function(response,status,headers,config){
-            console.log(response);
-	        if (response.error) {
+          if (response.error) {
 	        	$scope.noError = false;	
 	        	$scope.ErrorMessage = response.error;
             }else{
