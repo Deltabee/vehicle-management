@@ -1,4 +1,4 @@
-<header ng-include="'html/header.html'"></header>
+<header></header>
   <main>
     <div class="container">
       <div class="section">
@@ -21,20 +21,20 @@
             </thead>
 
             <tbody>
-              <tr>
-                <td>Alvin</td>
-                <td>Eclair</td>
-                <td>$0.87</td>
-                <td>$0.87</td>
-                <td>$0.87</td>
-                <td>$0.87</td>
-                <td>$0.87</td>
-                <td>$0.87</td>
-                <td>$0.87</td>
+              <tr data-ng-repeat="user in users | orderBy: 'id'">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.lisence_file }}</td>
+                <td>{{ user.status }}</td>
+                <td>{{ user.mobile_number }}</td>
+                <td>$ {{ user.balance }}</td>
+                <td>{{ user.dob }}</td>
+                <td>{{ user.di_number }}</td>
+                <td>{{ user.pin }}</td>
               </tr>
             </tbody>
           </table>
       </div>
     </div>
   </main>
-  <footer class="page-footer grey darken-1" style="padding-top: 0" ng-include="'html/footer.html'"></footer>
+  <footer class="page-footer grey darken-1" style="padding-top: 0"></footer>

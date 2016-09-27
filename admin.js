@@ -6,7 +6,7 @@ exports.login = function(crypto){
          if(err){
              console.log("Error connecting to Db");
          }
-         console.log("DB connection established")
+         console.log("DB connection established");
         var userName = req.body.userName;
         var password = req.body.password;
         var queryString = 'SELECT * FROM admin_master where username = "'+userName+'"';
@@ -59,20 +59,23 @@ exports.login = function(crypto){
   };
 };
 exports.authenticated = function(req,res){
+
+      console.log(req.params);
       var userLevel = req.params.access;
       sess=req.session;
       var result = {};
      if(typeof sess.userID !=='undefined' && sess.userID!='' && sess.userLevel==userLevel){
-         result.success = true;
+         result.status = 'success';
      }else{
-         result.error = false;
+         result.status = 'fail';
      }
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(result)); 
 };
-
+//Logout Route Handling
 exports.logout = function(req,res){
-    
+    var result = {};
+    sess = req.session;
     sess.userID ='' ;
     sess.userPrivilege = 0;
     sess.userLevel = '';
@@ -80,4 +83,30 @@ exports.logout = function(req,res){
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(result)); 
 }
+
+exports.userlist = function(req,res){
+
+  req.getConnection(function(err,connection){ 
+  var queryString = 'SELECT * FROM user_master where user_type = 1';
+  var result = {}; 
+  return connection.query(queryString, function(err, rows, fields) {
+        if (err)
+        {
+          result.error= err;
+            
+        }
+        else
+        {
+          result.success = JSON.stringify(rows);
+          console.log(rows);
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(result)); 
+ 
+      }); 
+    });
+};
+
+                      
+                     
 
