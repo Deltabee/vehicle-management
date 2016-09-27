@@ -3,15 +3,19 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="#/dashboard">TRIPS</a></li>
         <li><a href="#/user">USERS</a></li>
+        <li class="active"><a href="#/vendors">VENDORS</a></li>
         <li><a href="#/recharges">RECHARGES</a></li>
-        <li class="active"><a href="#/vehicles">VEHICLES</a></li>
+        <li><a href="#/vehicles">VEHICLES</a></li>
+        <li><a data-ng-click="logout()">LOGOUT</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
         <li><a href="#/dashboard">TRIPS</a></li>
         <li><a href="#/user">USERS</a></li>
+        <li><a href="#/vendors">VENDORS</a></li>
         <li><a href="#/recharges">RECHARGES</a></li>
         <li><a href="#/vehicles">VEHICLES</a></li>
+        <li><a data-ng-click="logout()">LOGOUT</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">Menu</i></a>
     </div>
@@ -19,22 +23,39 @@
   <main>
     <div class="container">
       <div class="section">
-        <a href="#/vehicles"  class="waves-effect waves-light btn grey lighten-3 black-text">In-Use</a> <a class="waves-effect waves-light btn grey">Idle</a>
+        <div class="row">
+          <div class="input-field col m4">
+            <input id="search-key" type="text" data-ng-model="username">
+            <label for="search-key">Search</label>
+          </div>
+          <div class="input-field col m8">
+            <div class="right-align">
+              <a href="#/addVendor" class="waves-effect waves-light btn">Add New</a>    
+            </div>
+          </div>
+        </div>
         <table>
             <thead>
               <tr>
-                  <th data-field="id">Vehicle ID</th>
-                  <th data-field="name">Trip ID</th>
-                  <th data-field="price">Owner ID</th>
-                  <th data-field="price">Vendor ID</th>
-                  <th data-field="price">Reg. No.</th>
-                  <th data-field="price">Description</th>
+                  <th data-field="id">Vendor ID</th>
+                  <th data-field="name">Name</th>
+                  <th data-field="price">License File</th>
+                  <th data-field="price">Verfied[Y/N]</th>
+                  <th data-field="price">Mobile</th>
+                  <th data-field="price">Balance</th>
+                  <th data-field="price">DOB</th>
+                  <th data-field="price">DI No.</th>
+                  <th data-field="price">Pin</th>
               </tr>
             </thead>
+
             <tbody>
               <tr>
                 <td>Alvin</td>
                 <td>Eclair</td>
+                <td>$0.87</td>
+                <td>$0.87</td>
+                <td>$0.87</td>
                 <td>$0.87</td>
                 <td>$0.87</td>
                 <td>$0.87</td>
