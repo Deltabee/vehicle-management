@@ -42,7 +42,8 @@
             database:'vehicle_admin'
         },'request')
     );//route index, hello world
-    app.use(session({secret: 'ssshhhhh'}));
+    app.use(session({secret: 'ssshhhhh',saveUninitialized: true,
+                 resave: true}));
     
     /*Routing Handler*/
     /*Adimin login & other functionality*/
@@ -68,7 +69,13 @@
 
      /*Add user*/
     app.post('/addUser',user.addUser);
+     
+    /*Add trip*/
+    app.post('/addTrip',trip.addTrip);
     
+    
+    /*Add vehicle*/
+    app.post('/addVehicle',vehicle.addVehicle);
 
     app.use(app.router);
     /*Routing Handler*/
