@@ -19,18 +19,21 @@ customApp.factory("flash", function($rootScope) {
 
 
 customApp.controller('indexController', function ($scope, $http, $location, flash) {
-	 $scope.noError = true;	
-     $scope.ErrorMessage = '';
-     $scope.login = function() {
-   
-        $http.post("/login", {userName:$scope.username, password: $scope.password})
-        .success(function(response,status,headers,config){
-          if (response.error) {
-	        	$scope.noError = false;	
-	        	$scope.ErrorMessage = response.error;
-            }else{
+      
+      $scope.noError = true;	
+      $scope.ErrorMessage = '';
+      $scope.login = function() {
+
+      $http.post("/login", {userName:$scope.username, password: $scope.password}).success(function(response,status,headers,config){
+            if (response.error) 
+            {
+            	$scope.noError = false;	
+            	$scope.ErrorMessage = response.error;
+            }
+            else
+            {
             	$location.path("/dashboard");
             }
         }); 
-    }
+      }
 });

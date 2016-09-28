@@ -1,6 +1,7 @@
     var express  = require('express');
     var app      = express();                               // create our app w/ express
     var morgan = require('morgan');             // log requests to the console (express4)
+    var url = require('url'); 
 
     var mysql = require('mysql');                     // mongoose for mysql
     var connection = require('express-myconnection');
@@ -12,6 +13,11 @@
     var session = require('express-session');
     
     var admin = require("./admin");
+    var user = require("./user");
+    var vendor = require("./vendor");
+    var recharge=require("./recharge");
+    var trip = require("./trip");
+    var vehicle = require("./vehicle");
     var router = require("./routes");
     
     
@@ -21,7 +27,7 @@
 
     app.use(bodyParser.urlencoded({'extended':'true'}));
     // parse application/x-www-form-urlencoded
-    
+    app.use(url); 
     app.use(bodyParser.json());  
     // parse application/json
     
@@ -39,10 +45,31 @@
     app.use(session({secret: 'ssshhhhh'}));
     
     /*Routing Handler*/
-    app.get('*', router.index);
+    /*Adimin login & other functionality*/
     app.post('/login', admin.login(crypto));
-    app.get('/authentication:access', admin.authenticated);
-    app.get('/userList', admin.userlist); 
+    app.get('/authentication/:access', admin.authenticated);
+    app.get('/logout', admin.logout); 
+
+    /*User list & other functionality*/
+    app.get('/userList', user.userlist);
+
+
+    /*Vendore list & other functionality*/
+    app.get('/vendorList', vendor.vendorList); 
+
+     /*Recharge list & other functionality*/
+    app.get('/rechargeList',  recharge.rechargelist);
+    
+     /*Trip list & other functionality*/
+    app.get('/tripList', trip.triplist);
+    
+     /*VEHICLElist & other functionality*/
+    app.get('/vehicleList', vehicle.vehiclelist);
+
+     /*Add user*/
+    app.post('/addUser',user.addUser);
+    
+
     app.use(app.router);
     /*Routing Handler*/
     
