@@ -13,6 +13,9 @@
  main {
      flex: 1 0 auto;
  }
+ .dataTables_length#entry-grid_length select {
+    display: inline-block;
+}
 .icon-block {
   padding: 0 15px;
 }

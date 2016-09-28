@@ -4,16 +4,16 @@
       <div class="section">
         <div class="row">
           <div class="input-field col m4">
-            <input id="search-key" type="text" data-ng-model="username">
-            <label for="search-key">Search</label>
-          </div>
-          <div class="input-field col m8">
-            <div class="right-align">
+            <div class="left-align">
               <a href="#/addVendor" class="waves-effect waves-light btn">Add New</a>    
             </div>
           </div>
+          <div class="input-field col m8">
+            
+          </div>
         </div>
-        <table>
+        <table id="entry-grid" datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="table table-hover"></table>
+        <!-- <table>
             <thead>
               <tr>
                   <th data-field="id">Vendor ID</th>
@@ -41,7 +41,7 @@
                 <td>$0.87</td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
       </div>
     </div>
   </main>
