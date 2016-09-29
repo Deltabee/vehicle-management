@@ -2,10 +2,8 @@
     var app      = express();                               // create our app w/ express
     var morgan = require('morgan');             // log requests to the console (express4)
     var url = require('url'); 
-<<<<<<< HEAD
-=======
+
     var multer = require('multer'); 
->>>>>>> Sonu
 
     var mysql = require('mysql');                     // mongoose for mysql
     var connection = require('express-myconnection');
@@ -19,12 +17,9 @@
     var admin = require("./admin");
     var user = require("./user");
     var vendor = require("./vendor");
-<<<<<<< HEAD
     var recharge=require("./recharge");
     var trip = require("./trip");
     var vehicle = require("./vehicle");
-=======
->>>>>>> Sonu
     var router = require("./routes");
     
     
@@ -60,19 +55,10 @@
 
     /*User list & other functionality*/
     app.get('/userList', user.userlist);
-<<<<<<< HEAD
-
-=======
-    app.post('/addUser', function(req, res){
-        console.log(req.body);
-        console.log(req.body.file);
-    });
->>>>>>> Sonu
-
+    
     /*Vendore list & other functionality*/
     app.get('/vendorList', vendor.vendorList); 
 
-<<<<<<< HEAD
      /*Recharge list & other functionality*/
     app.get('/rechargeList',  recharge.rechargelist);
     
@@ -92,8 +78,6 @@
     /*Add vehicle*/
     app.post('/addVehicle',vehicle.addVehicle);
 
-=======
->>>>>>> Sonu
     app.use(app.router);
     /*Routing Handler*/
     

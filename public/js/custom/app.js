@@ -71,8 +71,7 @@ customApp.directive('footer', ['$compile', function ($compile) {
 
 );
 
-<<<<<<< HEAD
-=======
+
 customApp.directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
@@ -99,4 +98,3 @@ customApp.directive('fileModel', ['$parse', function ($parse) {
         });
     }
 }]);*/
->>>>>>> Sonu
