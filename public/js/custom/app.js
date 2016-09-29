@@ -71,3 +71,32 @@ customApp.directive('footer', ['$compile', function ($compile) {
 
 );
 
+<<<<<<< HEAD
+=======
+customApp.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
+
+/*customApp.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(uploadUrl, data){
+        console.log(data);
+        $http.post(uploadUrl, data)
+        .success(function(){
+        })
+        .error(function(){
+        });
+    }
+}]);*/
+>>>>>>> Sonu
