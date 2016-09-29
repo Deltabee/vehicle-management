@@ -35,7 +35,6 @@ exports.login = function(crypto){
                             sess.userPrivilege = 1;
                             sess.userLevel = "admin";
                             result.success = rows[0];
-                            console.log(sess);
                         }
                         else
                         {
@@ -59,8 +58,6 @@ exports.login = function(crypto){
   };
 };
 exports.authenticated = function(req,res){
-
-      console.log(req.params);
       var userLevel = req.params.access;
       sess=req.session;
       var result = {};
@@ -83,29 +80,6 @@ exports.logout = function(req,res){
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify(result)); 
 }
-
-exports.userlist = function(req,res){
-
-  req.getConnection(function(err,connection){ 
-  var queryString = 'SELECT * FROM user_master where user_type = 1';
-  var result = {}; 
-  return connection.query(queryString, function(err, rows, fields) {
-        if (err)
-        {
-          result.error= err;
-            
-        }
-        else
-        {
-          result.success = JSON.stringify(rows);
-          console.log(rows);
-        }
-        res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify(result)); 
- 
-      }); 
-    });
-};
 
                       
                      
