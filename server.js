@@ -3,6 +3,8 @@
     var morgan = require('morgan');             // log requests to the console (express4)
     var url = require('url'); 
 
+    var multer = require('multer'); 
+
     var mysql = require('mysql');                     // mongoose for mysql
     var connection = require('express-myconnection');
     
@@ -24,7 +26,7 @@
     app.use(express.static(__dirname + '/public'));// set the static files location /public/img will be /img for users
     
     app.use(morgan('dev'));  // log every request to the console
-
+    app.use(multer({dest: './uploads'}));
     app.use(bodyParser.urlencoded({'extended':'true'}));
     // parse application/x-www-form-urlencoded
     app.use(url); 
@@ -53,8 +55,7 @@
 
     /*User list & other functionality*/
     app.get('/userList', user.userlist);
-
-
+    
     /*Vendore list & other functionality*/
     app.get('/vendorList', vendor.vendorList); 
 

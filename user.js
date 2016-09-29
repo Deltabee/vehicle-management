@@ -1,4 +1,3 @@
-
 exports.userlist = function(req,res){
   var draw = req.query.draw;
   var start = req.query.start;

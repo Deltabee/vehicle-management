@@ -57,5 +57,3 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
-
-// starting work for file seperation
