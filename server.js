@@ -71,12 +71,7 @@
      /*Add user*/
     app.post('/addUser',user.addUser);
      
-    /*Add trip*/
-    app.post('/addTrip',trip.addTrip);
     
-    
-    /*Add vehicle*/
-    app.post('/addVehicle',vehicle.addVehicle);
 
     app.use(app.router);
     /*Routing Handler*/
