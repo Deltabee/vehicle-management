@@ -36,4 +36,18 @@ customApp.controller('indexController', function ($scope, $http, $location, flas
             }
         }); 
       }
+
+      $scope.resetPass = function(){
+          $scope.noError = true; 
+          $scope.ErrorMessage = '';
+          $http.post("/sendEmail", {email:$scope.email}).success(function(response,status,headers,config){
+              if(response.error){
+                $scope.noError = false; 
+                $scope.ErrorMessage = response.error; 
+              }else{
+                $scope.noError = true; 
+                $scope.ErrorMessage = response.success;
+              }
+          });
+      }
 });

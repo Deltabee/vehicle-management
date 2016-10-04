@@ -1,11 +1,11 @@
 <nav class="grey darken-1" role="navigation">
-  <div class="nav-wrapper container"><!-- <a id="logo-container" href="#" class="brand-logo">Logo</a> -->
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#/dashboard">TRIPS</a></li>
-      <li><a href="#/user">USERS</a></li>
-      <li><a href="#/vendors">VENDORS</a></li>
-      <li><a href="#/recharges">RECHARGES</a></li>
-      <li><a href="#/vehicles">VEHICLES</a></li>
+  <div class="nav-wrapper container"><a id="logo-container" href="#/dashboard" class="brand-logo"><img class="responsive-img circle" src="./images/logo.png" style="height: 65px; padding: 5px;" /></a>
+    <ul class="right hide-on-med-and-down" ng-controller="headerController">
+      <li ng-class="{active: $route.current.activetab == 'dashboard'}"><a href="#/dashboard">TRIPS</a></li>
+      <li ng-class="{active: $route.current.activetab == 'users'}"><a href="#/user">USERS</a></li>
+      <li ng-class="{active: $route.current.activetab == 'vendors'}"><a href="#/vendors">VENDORS</a></li>
+      <li ng-class="{active: $route.current.activetab == 'recharges'}"><a href="#/recharges">RECHARGES</a></li>
+      <li ng-class="{active: $route.current.activetab == 'vehicles'}"><a href="#/vehicles">VEHICLES</a></li>
       <li><a data-ng-click="logout()">LOGOUT</a></li>
     </ul>
 

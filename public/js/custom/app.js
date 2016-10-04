@@ -1,39 +1,82 @@
 'use strict';
 
 
-var customApp = angular.module('vehiclesApp', ['ngRoute', 'datatables']);
+var customApp = angular.module('vehiclesApp', ['ngRoute', 'datatables', 'ui.materialize']);
 
 customApp.config(function($routeProvider){
     $routeProvider.when('/', {
         controller: 'indexController',
-        templateUrl : 'html/login.html'
+        templateUrl : 'html/login.html',
+    }).when('/resetPassword',{
+        controller:'resetPasswordController',
+        templateUrl : 'html/resetPassword.html',
+    }).when('/newPassword/:token/:id',{
+        controller:'newPasswordController',
+        templateUrl : 'html/changePassword.html'
     }).when('/vehicles', {
-        controller: 'vehiclesController',
-        templateUrl : 'html/vehicles.html'
+        controller: 'vehiclesController as vehicle',
+        templateUrl : 'html/vehicles.html',
+        activetab: 'vehicles'
     }).when('/user', {
-        controller: 'userController',
-        templateUrl : 'html/user.html'
+        controller: 'userController as user',
+        templateUrl : 'html/user.html',
+        activetab: 'users'
     }).when('/recharges', {
-        controller: 'rechargeController',
-        templateUrl : 'html/recharge.html'
+        controller: 'rechargeController as recharge',
+        templateUrl : 'html/recharge.html',
+        activetab: 'recharges'
     }).when('/completed', {
     	controller: 'completedTripController',
-    	templateUrl: 'html/completed.html'
+    	templateUrl: 'html/completed.html',
+        activetab: 'dashboard'
+    }).when('/cancelTrips', {
+        controller: 'cancelTripsController',
+        templateUrl: 'html/cancel-trips.html',
+        activetab: 'dashboard'
     }).when('/idleVehicle', {
-        controller: 'idleVehicleController',
-        templateUrl: 'html/idleVehicle.html'
+        controller: 'idleVehicleController as idleVehicle',
+        templateUrl: 'html/idleVehicle.html',
+        activetab: 'vehicles'
     }).when('/dashboard', {
-        controller: 'dashboardMainController',
-        templateUrl: 'html/dashboard.html'
+        controller: 'dashboardMainController as action',
+        templateUrl: 'html/dashboard.html',
+        activetab: 'dashboard'
     }).when('/addUser', {
         controller: 'addUserController',
-        templateUrl: 'html/add-user.html'
+        templateUrl: 'html/add-user.html',
+        activetab: 'users'
     }).when('/vendors', {
-        controller: 'vendorController',
-        templateUrl: 'html/vendors.html'
+        controller: 'vendorController as vendor',
+        templateUrl: 'html/vendors.html',
+        activetab: 'vendors'
     }).when('/addVendor', {
         controller: 'addVendorController',
-        templateUrl: 'html/add-vendor.html'
+        templateUrl: 'html/add-vendor.html',
+        activetab: 'vendors'
+    }).when('/addTrip', {
+        controller: 'addTripController',
+        templateUrl: 'html/add-trip.html',
+        activetab: 'dashboard'
+    }).when('/addRecharge', {
+        controller: 'addRechargeController',
+        templateUrl: 'html/add-recharge.html',
+        activetab: 'recharges'
+    }).when('/addVehicle', {
+        controller: 'addVehicleController',
+        templateUrl: 'html/add-vehicle.html',
+        activetab: 'vehicles'
+    }).when('/editOnGoingTrip/:id', {
+        controller: 'editOnGoingTripController',
+        templateUrl: 'html/edit-ongoing-trip.html',
+        activetab: 'dashboard'
+    }).when('/editUser/:id', {
+        controller: 'editUserController',
+        templateUrl: 'html/edit-user.html',
+        activetab: 'users'
+    }).when('/editVendor/:id', {
+        controller: 'editVendorController',
+        templateUrl: 'html/edit-vendor.html',
+        activetab: 'vendors'
     }).otherwise({
         redirectTo: '/'
     });
@@ -88,13 +131,25 @@ customApp.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
-/*customApp.service('fileUpload', ['$http', function ($http) {
-    this.uploadFileToUrl = function(uploadUrl, data){
-        console.log(data);
-        $http.post(uploadUrl, data)
+customApp.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(fields, uploadUrl, file){
+
+        fd.append('file', file);
+        for(var i = 0; i < fields.length; i++){
+            fd.append(fields[i].name, fields[i].data)
+        }
+
+        
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
         .success(function(){
         })
         .error(function(){
         });
     }
-}]);*/
+}]);
+customApp.controller('headerController', function($scope, $route) {
+       $scope.$route = $route;
+});

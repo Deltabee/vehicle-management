@@ -22,8 +22,20 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
-.red.lighten-3 {
+.red.lighten-1 {
     color: #fff;
     border-radius: 5px;
     padding: 12px !important;
+}
+.brand-logo img{
+    height: 65px !important;
+    padding: 5px !important;
+}
+.green.lighten-3.ng-binding {
+    color: #fff;
+    border-radius: 5px;
+    padding: 12px !important;
+}
+div#modal1 {
+    height: 100%;
 }

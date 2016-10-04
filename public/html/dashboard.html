@@ -2,34 +2,70 @@
   <main>
     <div class="container">
       <div class="section">
-      	<a class="waves-effect waves-light btn grey">Ongoing</a> <a href="#/completed" class="waves-effect waves-light btn grey lighten-3 black-text">Completed</a>
-        <table id="entry-grid" datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="table table-hover"></table>
-      	<!-- <table>
-  	        <thead>
-  	          <tr>
-  	              <th data-field="id">Trip ID</th>
-  	              <th data-field="name">Owner ID</th>
-  	              <th data-field="price">Start Date</th>
-  	              <th data-field="price">Start Time</th>
-  	              <th data-field="price">Multiplier</th>
-  	              <th data-field="price">Vehicle ID</th>
-  	              <th data-field="price">Requester ID</th>
-  	          </tr>
-  	        </thead>
+        <div class="row">
+          <div class="col m6">
+        	  <a class="waves-effect waves-light btn grey">Ongoing</a> <a href="#/completed" class="waves-effect waves-light btn grey lighten-3 black-text">Completed</a> <a href="#/cancelTrips" class="waves-effect waves-light btn grey lighten-3 black-text">Cancelled</a>
+          </div>
+          <div class="col m6 right-align">
+            <a href="#/addTrip" class="waves-effect waves-light btn">Add New</a>    
+          </div>
+        </div>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h4>Enter Details</h4>
+              <form name="addCompleteTrip" novalidate>
+                <div id="modal_content" class="row">
 
-  	        <tbody>
-  	          <tr>
-  	            <td>Alvin</td>
-  	            <td>Eclair</td>
-  	            <td>$0.87</td>
-  	            <td>$0.87</td>
-  	            <td>$0.87</td>
-  	            <td>$0.87</td>
-  	            <td>$0.87</td>
-  	          </tr>
-  	        </tbody>
-        	</table> -->
+                </div>
+                <div class="row">
+                 <div class="input-field col s6">
+                    <!-- <p><b>Start Date</b></p>
+                    <input id="date" type="date" ng-model="data.start_date" class="validate"> -->
+                    <label for="inputCreated">End date</label>
+                    <input input-date
+                          ng-model="end_date"
+                          type="text"
+                          name="end_date"
+                          id="inputCreated"
+                          ng-model="currentTime"
+                          container=""
+                          format="yyyy-mm-dd"
+                          months-full="{{ month }}"
+                          months-short="{{ monthShort }}"
+                          weekdays-full="{{ weekdaysFull }}"
+                          weekdays-short="{{ weekdaysShort }}"
+                          weekdays-letter="{{ weekdaysLetter }}"
+                          disable="disable"
+                          today="today"
+                          first-day="1"
+                          clear="clear"
+                          close="close"
+                          select-years="15"
+                          required/>
+                      <p ng-show="addCompleteTrip.first_name.$invalid && !addCompleteTrip.first_name.$pristine" class="help-block red-text">Please select end date</p>
+                  </div>
+                  <div class="input-field col s6">
+                      <label for="input_starttime">End Time</label>
+                      <input id="input_starttime" name="end_time" ng-model="end_time" input-clock data-twelvehour="false" type="text" required>
+                      <p ng-show="addCompleteTrip.end_time.$invalid && !addCompleteTrip.end_time.$pristine" class="help-block red-text">Please select end time</p>
+                  </div>
+                </div>
+                <div class="row">
+                 <div class="input-field col s6">
+                    <input id="pin" name="amount" ng-model="amount" type="number" class="validate" required>
+                    <label for="pin">Amount</label>
+                    <p ng-show="addCompleteTrip.amount.$invalid && !addCompleteTrip.amount.$pristine" class="help-block red-text">Please enter amount to be deducted</p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <a class=" modal-action modal-close waves-effect  btn waves-green" ng-disabled="addCompleteTrip.$invalid"  ng-click="addToComplete()">Complete</a>
+                </div>
+            </form>
+          </div>
+        </div>
+        <table id="entry-grid" datatable="" dt-options="dtOptions" dt-columns="dtColumns" class="table table-hover responsive-table"></table>
       </div>
+      <input type="text" style="display:none" data-ng-model="trip_id" id="trip_id">
     </div>
   </main>
   <footer class="page-footer grey darken-1" style="padding-top: 0"></footer>

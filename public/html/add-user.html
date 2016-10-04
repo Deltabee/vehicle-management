@@ -8,20 +8,8 @@
               <div class="row">
                 <div class="input-field col s6">
                   <input id="first_name" type="text" name="first_name" ng-model="user.first_name" required class="validate">
-                  <label for="first_name">First Name</label>
-                  <p ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine" class="help-block red-text">Please enter first name</p>
-                </div>
-                <div class="input-field col s6">
-                  <input id="last_name" name="last_name" ng-model="user.last_name" type="text" class="validate" required>
-                  <label for="last_name">Last Name</label>
-                  <p ng-show="userForm.last_name.$invalid && !userForm.last_name.$pristine" class="help-block red-text">Please enter last name</p>
-                </div>
-              </div>
-              <div class="row">
-               <div class="input-field col s6">
-                  <input id="email" name="email" ng-model="user.email"  type="email" class="validate" required>
-                  <label for="email">Email</label>
-                  <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block red-text">Enter a valid email.</p>
+                  <label for="first_name">Full Name</label>
+                  <p ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine" class="help-block red-text">Please enter full name</p>
                 </div>
                 <div class="input-field col s6">
                   <input id="mobile" type="number" name="mobile" ng-model="user.mobile" class="validate" required>
@@ -33,8 +21,7 @@
                 <div class="file-field input-field col s6">
                   <div class="btn grey">
                     <span>License File</span>
-                    <input type="file" name="license" accept="image/*" file-model="user.file"/>
-                    <!-- <input type="file" name="license" accept="image/*"> ng-model="user.lisense_file" -->
+                    <input type="file" name="license" accept="image/*" file-model="myFile"/>
                   </div>
                   <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">
@@ -48,8 +35,27 @@
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input type="date" id="dob" name="dob" ng-model="user.dob" required>
-                  <!-- <label for="dob">Enter Date of Birth</label> -->
+                <label for="inputCreated">Date of Birth</label>
+                  <input input-date
+                        ng-model="user.dob"
+                        type="text"
+                        name="dob"
+                        id="inputCreated"
+                        ng-model="currentTime"
+                        container=""
+                        format="yyyy-mm-dd"
+                        months-full="{{ month }}"
+                        months-short="{{ monthShort }}"
+                        weekdays-full="{{ weekdaysFull }}"
+                        weekdays-short="{{ weekdaysShort }}"
+                        weekdays-letter="{{ weekdaysLetter }}"
+                        disable="disable"
+                        today="today"
+                        first-day="1"
+                        clear="clear"
+                        close="close"
+                        select-years="15"
+                        required/>
                   <p ng-show="userForm.dob.$invalid && !userForm.dob.$pristine" class="help-block red-text">Please enter date of birth.</p>
                 </div>
                 <div class="input-field col s6">
@@ -64,12 +70,15 @@
                   <label for="pin">Pin Number</label>
                   <p ng-show="userForm.pin.$invalid && !userForm.pin.$pristine" class="help-block red-text">Please enter pin number.</p>
                 </div>
+              </div>
+              <div class="row">
                 <div class="input-field col s6" ng-init="user.verified='Y'">
+                  <p><b>Verified user</b></p>
                     <input name="verified" type="radio" ng-model="user.verified" id="yes"  value="Y" />
                     <label for="yes">Yes</label>
                     <input name="group1" value="N" ng-model="user.verified" type="radio" id="no" />
                     <label for="no">No</label>
-               </div>
+                </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
